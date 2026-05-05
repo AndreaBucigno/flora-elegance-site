@@ -1,9 +1,7 @@
 // Catalogo prodotti con filtri rapidi per occasione e tipologia
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
 import { products } from "@/data/products";
-import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +9,6 @@ const occasions = ["Tutte", "Matrimonio", "Compleanno", "Anniversario"];
 const categories = ["Tutte", "Rose", "Tulipani", "Piante"];
 
 export const Catalog = () => {
-  const { addItem } = useCart();
   const [occasion, setOccasion] = useState("Tutte");
   const [category, setCategory] = useState("Tutte");
 
@@ -80,20 +77,9 @@ export const Catalog = () => {
                   </span>
                 )}
               </div>
-              <div className="p-6 flex items-center justify-between gap-4">
-                <div>
-                  <h3 className="font-serif text-xl">{p.name}</h3>
-                  <p className="text-muted-foreground text-sm mt-1">€ {p.price.toFixed(2)}</p>
-                </div>
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.08, rotate: 90 }}
-                  onClick={() => addItem(p)}
-                  aria-label={`Aggiungi ${p.name} al carrello`}
-                  className="h-11 w-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-soft hover:bg-primary-glow transition-colors"
-                >
-                  <Plus className="h-5 w-5" />
-                </motion.button>
+              <div className="p-6">
+                <h3 className="font-serif text-xl">{p.name}</h3>
+                <p className="text-muted-foreground text-sm mt-1">€ {p.price.toFixed(2)}</p>
               </div>
             </motion.article>
           ))}

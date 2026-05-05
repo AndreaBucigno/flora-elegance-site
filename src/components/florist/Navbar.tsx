@@ -1,7 +1,6 @@
-// Header sticky con navigazione e icona carrello
-import { Flower2, ShoppingBag } from "lucide-react";
-import { useCart } from "@/context/CartContext";
-import { motion, AnimatePresence } from "framer-motion";
+// Header sticky con navigazione
+import { Flower2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -11,7 +10,6 @@ const links = [
 ];
 
 export const Navbar = () => {
-  const { count } = useCart();
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/50">
@@ -34,25 +32,7 @@ export const Navbar = () => {
           ))}
         </nav>
 
-        <button
-          aria-label="Carrello"
-          className="relative p-2 rounded-full hover:bg-muted transition-colors"
-        >
-          <ShoppingBag className="h-5 w-5 text-foreground" />
-          <AnimatePresence>
-            {count > 0 && (
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0 }}
-                key={count}
-                className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs font-semibold rounded-full h-5 min-w-5 px-1 flex items-center justify-center shadow-rose"
-              >
-                {count}
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </button>
+
       </div>
     </header>
   );
