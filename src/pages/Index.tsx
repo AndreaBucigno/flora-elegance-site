@@ -1,16 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+// Pagina principale dell'applicazione fioraio
+import { CartProvider } from "@/context/CartContext";
+import { Navbar } from "@/components/florist/Navbar";
+import { Hero } from "@/components/florist/Hero";
+import { Catalog } from "@/components/florist/Catalog";
+import { Delivery } from "@/components/florist/Delivery";
+import { Testimonials } from "@/components/florist/Testimonials";
+import { Footer } from "@/components/florist/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <CartProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main>
+          <Hero />
+          <Catalog />
+          <Delivery />
+          <Testimonials />
+        </main>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
